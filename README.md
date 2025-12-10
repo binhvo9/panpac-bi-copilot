@@ -2,7 +2,7 @@
 
 **Goal:** Demonstrate end-to-end BI capability for a renewables company (modeled on Pan Pac) – from business requirements and semantic modelling to dashboards, governance, and an AI-style Insight Agent.
 
-This portfolio project is designed to match the responsibilities of a **Senior Business Analyst – Business Intelligence**:
+This portfolio project is designed to match the responsibilities of a **Business Analyst – Business Intelligence**:
 
 - Shape a BI roadmap aligned with business priorities.
 - Design a semantic model and KPI layer for operations, supply chain, and finance.
@@ -15,7 +15,7 @@ Tech stack (Mac + free tools only):
 - Python, pandas/polars, DuckDB/SQLite
 - Streamlit + Plotly for interactive BI dashboards
 - Markdown documentation for roadmap, governance, and training
-- Simple rule-based Insight Agent (with optional LLM extension)
+- Simple Insight Agent (with simple scikit-learn model for predictive and rule-based for diagnostic and prescriptive DA demonstration)
 
 
 Operations – Mill Performance & Yield
