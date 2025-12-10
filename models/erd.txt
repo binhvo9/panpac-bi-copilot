@@ -1,0 +1,60 @@
+###############################################################
+#                PANPAC BI – ENTERPRISE DATA MODEL            #
+#            (ASCII ERD for Portfolio Documentation)          #
+###############################################################
+
+                   ┌───────────┐
+                   │ Dim_Region│
+                   └─────┬─────┘
+                         │
+        ┌────────────────┼──────────────────┐
+        │                │                  │
+        ▼                ▼                  ▼
+
+  ┌────────────────────────────────────────────────┐
+  │                 Fact_Production                │
+  │  (grain: day–site–product)                     │
+  └────────────────────────────────────────────────┘
+        ▲                ▲                  ▲
+        │                │                  │
+   ┌────┴────┐      ┌────┴─────┐      ┌────┴──────┐
+   │Dim_Date │      │Dim_Site  │      │Dim_Product│
+   └─────────┘      └──────────┘      └───────────┘
+
+
+  ┌────────────────────────────────────────────────┐
+  │                 Fact_Shipment                  │
+  │   (grain: one row per shipment order)          │
+  └────────────────────────────────────────────────┘
+        ▲                ▲               ▲      ▲
+        │                │               │      │
+   ┌────┴────┐      ┌────┴─────┐   ┌────┴────┐ ┌────┴─────────┐
+   │Dim_Date │      │Dim_Site  │   │Dim_Product│ │Dim_Customer │
+   └─────────┘      └──────────┘   └───────────┘ └──────────────┘
+
+
+  ┌────────────────────────────────────────────────┐
+  │                 Fact_Finance                   │
+  │   (grain: month–product–region)                │
+  └────────────────────────────────────────────────┘
+        ▲                ▲                 ▲
+        │                │                 │
+   ┌────┴────┐      ┌────┴──────┐     ┌────┴──────┐
+   │Dim_Date │      │Dim_Product│     │Dim_Region │
+   └─────────┘      └───────────┘     └───────────┘
+
+
+###############################################################
+# Notes:
+# - Dim_Date, Dim_Product, Dim_Region are conformed dimensions
+#   (shared across multiple fact tables).
+#
+# - Fact_Production connects Operations domain
+# - Fact_Shipment connects Supply Chain domain
+# - Fact_Finance connects Finance domain
+#
+# - All fact tables use surrogate integer keys:
+#   date_key, site_key, product_key, customer_key, region_key
+#
+# - This ERD is designed for Tableau and DuckDB
+# #############################################################

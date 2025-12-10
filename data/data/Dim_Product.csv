@@ -1,0 +1,7 @@
+product_key,product_name,product_type,grade,unit_of_measure
+1,Log A28,Log,A28,m3
+2,Log B22,Log,B22,m3
+3,Timber Premium,Timber,TP,m3
+4,Timber Standard,Timber,TS,m3
+5,Pulp High Grade,Pulp,PG,tonne
+6,Pulp Low Grade,Pulp,PL,tonne

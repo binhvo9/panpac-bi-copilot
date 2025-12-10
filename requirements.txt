@@ -1,0 +1,30 @@
+# Core data packages
+pandas==2.2.1            # main data manipulation library
+numpy==1.26.4            # numeric operations (needed by pandas)
+
+# DuckDB (local OLAP database)
+duckdb==0.10.2           # super fast in-memory SQL engine for analytics
+
+# Optional: Polars for faster dataframe processing
+polars==0.20.8           # faster alternative to pandas (optional but nice)
+
+# Data generation utilities
+faker==24.4.0            # generate synthetic names, customers, etc.
+python-dateutil==2.9.0   # flexible date handling
+
+# Plotting (for testing before Tableau)
+matplotlib==3.8.3        # basic charts if needed
+plotly==5.19.0           # interactive charts (optional)
+
+# CSV and file helpers
+pyarrow==15.0.0          # needed for parquet/arrow support
+
+# For the AI Insight Agent (coming later)
+scipy==1.12.0            # for anomaly detection / z-score
+
+duckdb
+pandas
+plotly
+streamlit
+
+scikit-learn

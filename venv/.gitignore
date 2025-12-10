@@ -1,0 +1,21 @@
+# Python / venv
+__pycache__/
+*.pyc
+venv/
+.env
+
+# macOS
+*.DS_Store
+
+# Streamlit
+.streamlit/
+
+# DuckDB database files (generated)
+duckdb/*.duckdb
+duckdb/*.wal
+
+# Optional: ignore synthetic output 
+data/*.csv
+
+# Logs, checkpoints
+*.log

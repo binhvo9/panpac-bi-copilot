@@ -1,0 +1,98 @@
+# ===============================================================
+# PanPac BI Copilot – Semantic Metrics Layer
+# This file defines KPIs in a clean, consistent way.
+# Tableau (or any BI tool) can follow these definitions.
+# ===============================================================
+
+metrics:
+
+  # ===============================
+  # OPERATIONS METRICS (MILL & FORESTRY)
+  # ===============================
+
+  - name: production_yield
+    label: "Production Yield %"
+    description: >
+      How efficiently raw logs are converted into finished products.
+      Higher yield = less waste and better mill performance.
+    calculation: "ratio"
+    numerator: output_volume_m3
+    denominator: input_volume_m3
+    grain: "day_site_product"
+
+  - name: downtime_percentage
+    label: "Downtime %"
+    description: "How much of the planned shift time was lost to downtime."
+    calculation: "ratio"
+    numerator: downtime_hours
+    denominator: shift_hours
+    grain: "day_site"
+
+  - name: energy_intensity
+    label: "Energy Intensity"
+    description: "How many kWh of energy are used to produce one cubic metre of product."
+    calculation: "formula"
+    expr: "energy_kwh / output_volume_m3"
+    grain: "day_site_product"
+
+
+  # ===============================
+  # SUPPLY CHAIN METRICS (LOGISTICS)
+  # ===============================
+
+  - name: otif_rate
+    label: "OTIF %"
+    description: >
+      On-Time, In-Full delivery rate.
+      1 = shipment delivered both on time AND in full.
+      0 = one or both failed.
+    calculation: "avg"
+    expr: "on_time_flag * in_full_flag"
+    grain: "order"
+
+  - name: on_time_rate
+    label: "On-Time Delivery %"
+    description: "How often shipments arrive on or before the promised date."
+    calculation: "avg"
+    expr: "on_time_flag"
+    grain: "order"
+
+  - name: in_full_rate
+    label: "In-Full Delivery %"
+    description: "How often shipments arrive with all items and correct volume."
+    calculation: "avg"
+    expr: "in_full_flag"
+    grain: "order"
+
+  - name: lead_time_days
+    label: "Lead Time (Days)"
+    description: "Delivery_date minus order_date."
+    calculation: "formula"
+    expr: "delivery_date - order_date"
+    grain: "order"
+
+
+  # ===============================
+  # FINANCE METRICS
+  # ===============================
+
+  - name: revenue
+    label: "Revenue"
+    description: "Total sales value for the period."
+    calculation: "sum"
+    expr: "revenue"
+    grain: "month_product_region"
+
+  - name: gross_margin_pct
+    label: "Gross Margin %"
+    description: "Profit percentage after direct costs."
+    calculation: "formula"
+    expr: "(revenue - direct_cost) / revenue"
+    grain: "month_product_region"
+
+  - name: ebitda_margin_pct
+    label: "EBITDA Margin %"
+    description: "EBITDA divided by Revenue."
+    calculation: "formula"
+    expr: "(revenue - direct_cost - opex) / revenue"
+    grain: "month_product_region"
