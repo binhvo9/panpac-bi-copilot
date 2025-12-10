@@ -79,7 +79,6 @@ This is a proof-of-concept showing how a real AI model could be wired into PanPa
 FOR A MORE DETAILED AND COMPLETE README, PLEASE SEE BELOW
 
 
-````markdown
 # PanPac BI Copilot – DuckDB + Python + AI Insight Agent
 
 A portfolio project that simulates a **Senior BI Analyst – Business Intelligence** role for a forestry company like **Pan Pac**.
